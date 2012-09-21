@@ -119,35 +119,36 @@ class WP_Help_Pointer {
     public function add_scripts() {
         $pointers = $this->valid;
       
-        if(!empty($pointers)) {
+        if( empty( $pointers ) ) 
+            return;
 
-            $pointers = json_encode($pointers);
-       
-            echo <<<HTML
-            <script>
-            jQuery(document).ready( function($) {
-                var WPHelpPointer = {$pointers};
-               
-                $.each(WPHelpPointer.pointers, function(i) {
-                    wp_help_pointer_open(i);
-                });
-
-                function wp_help_pointer_open(i) {
-                    pointer = WPHelpPointer.pointers[i];
-                    options = $.extend( pointer.options, {
-                        close: function() {
-                            $.post( ajaxurl, {
-                                pointer: pointer.pointer_id,
-                                action: 'dismiss-wp-pointer'
-                            });
-                        }
-                    });
-                    $(pointer.target).pointer( options ).pointer('open');
-                }
+        $pointers = json_encode( $pointers );
+   
+        echo <<<HTML
+        <script>
+        jQuery(document).ready( function($) {
+            var WPHelpPointer = {$pointers};
+           
+            $.each(WPHelpPointer.pointers, function(i) {
+                wp_help_pointer_open(i);
             });
-            </script>
+
+            function wp_help_pointer_open(i) {
+                pointer = WPHelpPointer.pointers[i];
+                options = $.extend( pointer.options, {
+                    close: function() {
+                        $.post( ajaxurl, {
+                            pointer: pointer.pointer_id,
+                            action: 'dismiss-wp-pointer'
+                        });
+                    }
+                });
+                $(pointer.target).pointer( options ).pointer('open');
+            }
+        });
+        </script>
 HTML;
-        }
+        
     }
 
 } // end class
