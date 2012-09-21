@@ -32,7 +32,7 @@
  * @version 0.1
  * @author Tim Debo <tim@rawcreativestudios.com>
  * @copyright Copyright (c) 2012, Raw Creative Studios
- * @link http://justintadlock.com/archives/2008/05/27/get-the-image-wordpress-plugin
+ * @link https://github.com/rawcreative/wp-help-pointers
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 

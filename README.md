@@ -3,6 +3,8 @@ WP Help Pointers
 
 Class for registering and using custom WP Help Tooltips in WP 3.3+
 
+Modified from: http://wp.tutsplus.com/tutorials/integrating-with-wordpress-ui-admin-pointers/
+
 How to Use:
 ===========
   In your functions.php file:
