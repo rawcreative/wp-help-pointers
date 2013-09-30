@@ -59,7 +59,19 @@ class WP_Help_Pointer {
 
     public function register_pointers( $pntrs ) {
        
+        $pointers = $this->pointers;
+    
         foreach( $pntrs as $ptr ) {
+            
+            // show in all screens if not specified
+            if ( empty($ptr['screen']) ) {
+                  $screen = get_current_screen();
+                  $ptr['screen'] = $screen->id;
+            }
+            // if no id is specified, generate a unique one
+            if ( empty($ptr['id']) ) {
+                $ptr['id'] = md5( $ptr['title'] . $ptr['content'] );
+            }
                 
             if( $ptr['screen'] == $this->screen_id ) {
                
@@ -68,8 +80,8 @@ class WP_Help_Pointer {
                     'target' => $ptr['target'],
                     'options' => array(
                         'content' => sprintf( '<h3> %s </h3> <p> %s </p>',
-                            __( $ptr['title'] , 'plugindomain' ),
-                            __( $ptr['content'], 'plugindomain' )
+                            $ptr['title'],
+                            $ptr['content']
                         ),
                         'position' => $ptr['position']
                     )
@@ -78,7 +90,7 @@ class WP_Help_Pointer {
             }
         }
 
-         $this->pointers = $pointers;
+        $this->pointers = $pointers;
 
     }
 
