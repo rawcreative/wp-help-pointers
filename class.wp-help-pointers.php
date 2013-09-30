@@ -80,8 +80,8 @@ class WP_Help_Pointer {
                     'target' => $ptr['target'],
                     'options' => array(
                         'content' => sprintf( '<h3> %s </h3> <p> %s </p>',
-                            __( $ptr['title'] , 'plugindomain' ),
-                            __( $ptr['content'], 'plugindomain' )
+                            $ptr['title'],
+                            $ptr['content']
                         ),
                         'position' => $ptr['position']
                     )
