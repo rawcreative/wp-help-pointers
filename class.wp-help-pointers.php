@@ -58,7 +58,7 @@ class WP_Help_Pointer {
     }
 
     public function register_pointers( $pntrs ) {
-       
+        $pointers = null;       
         foreach( $pntrs as $ptr ) {
                 
             if( $ptr['screen'] == $this->screen_id ) {
