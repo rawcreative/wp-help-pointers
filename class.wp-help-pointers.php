@@ -29,7 +29,7 @@
  *
  * 
  * @package WP_Help_Pointer
- * @version 0.1
+ * @version 0.2
  * @author Tim Debo <tim@rawcreativestudios.com>
  * @copyright Copyright (c) 2012, Raw Creative Studios
  * @link https://github.com/rawcreative/wp-help-pointers
@@ -58,7 +58,8 @@ class WP_Help_Pointer {
     }
 
     public function register_pointers( $pntrs ) {
-       
+        $pointers = null;   
+        
         foreach( $pntrs as $ptr ) {
                 
             if( $ptr['screen'] == $this->screen_id ) {
